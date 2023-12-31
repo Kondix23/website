@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>https://kondix23.github.io/website/</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #ffc0cb; /* Pink background */
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .header_text {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .gif_container {
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        p {
+            font-weight: bold;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-weight: bold;
+            letter-spacing: 1px;
+            width: 120px; /* Set a fixed width for buttons */
+        }
+
+        #yesButton {
+            background: linear-gradient(to right, #87CEEB, #00BFFF); /* Gradient blue for "Yes" button */
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Add some shadow */
+        }
+
+        #yesButton:hover {
+            transform: scale(1.1); /* Make the button slightly bigger when hovered */
+        }
+
+        #noButton {
+            background-color: #ff3366; /* Rosy color for "No" button */
+            pointer-events: none; /* Disable button click */
+        }
+
+        #noButton:hover {
+            animation: shakeAnimation 0.5s ease-in-out;
+        }
+
+        @keyframes shakeAnimation {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25%, 75% {
+                transform: translateX(-5px);
+            }
+            50% {
+                transform: translateX(5px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header_text">Pójdziesz ze mną na randkę?</h1>
+        <div class="gif_container">
+            <img src="https://media.giphy.com/media/LnKonfpQ44fNvuGLkA/giphy.gif" alt="Cute animated cat.">
+        </div>
+
+        <div>
+            <p>Wybierz mądrze 🤫</p>
+        </div>
+
+        <div class="buttons" style="position: relative; display: flex; justify-content: center; gap: 20px;">
+            <button class="btn" id="yesButton" onclick="nextPage()">Tak</button>
+            <button class="btn" id="noButton">Nie</button>
+
+            <style>
+                #yesButton {
+                    background: linear-gradient(to right, #87CEEB, #00BFFF); /* Gradient blue for "Yes" button */
+                    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Add some shadow */
+                }
+            
+                #yesButton:hover {
+                    transform: scale(1.1); /* Make the button slightly bigger when hovered */
+                }
+            
+                #noButton {
+                    background-color: #ff3366; /* Rosy color for "No" button */
+                    pointer-events: none; /* Disable button click */
+                }
+            
+                #noButton:hover {
+                    animation: shakeAnimation 0.5s ease-in-out;
+                }
+            
+                @keyframes shakeAnimation {
+                    0%, 100% {
+                        transform: translateX(0);
+                    }
+                    25%, 75% {
+                        transform: translateX(-5px);
+                    }
+                    50% {
+                        transform: translateX(5px);
+                    }
+                }
+            </style>
+        </div>
+    </div>
+
+    <script>
+        function nextPage() {
+            window.location.href = "yes.html";
+        }
+    </script>
+</body>
+</html>
