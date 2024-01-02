@@ -43,28 +43,23 @@
             color: #fff;
             font-weight: bold;
             letter-spacing: 1px;
-            background-color: #4CAF50; /* Green color for "Send" button */
-            margin-right: 10px; /* Add margin to separate the buttons */
+            background-color: #00a4fc; /* Green color for "Send" button */
         }
 
-        .btn:hover {
-            background-color: #45a049; /* Darker green on hover */
-        }
-
-        .back-btn {
+        .btn2 {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
             border: none;
             border-radius: 5px;
-            color: #fff;
+            color: black;
             font-weight: bold;
             letter-spacing: 1px;
-            background-color: #ff3366; /* Rosy color for "Back" button */
+            background-color: #ffc0cb; /* Green color for "Send" button */
         }
 
-        .back-btn:hover {
-            background-color: #e6005c; /* Darker rosy color on hover */
+        .btn:hover {
+            background-color: #ff3366; /* Darker green on hover */
         }
 
         @keyframes shakeAnimation {
@@ -87,39 +82,49 @@
             <img src="https://media.giphy.com/media/LnKonfpQ44fNvuGLkA/giphy.gif" alt="Excited gif">
         </div>
         <div class="date_time_picker">
-            <label for="datetime">Wybierz datę i godzinę:</label>
-            <input type="datetime-local" id="datetime" name="datetime" required>
+            <label for="datetime">Wybierz datę i czas:</label>
+            <input type="datetime-local" id="datetime" name="datetime" required min="{{getCurrentDateTime()}}">
         </div>
         <button class="btn" onclick="sendDate()">Wyślij</button>
-        <a class="back-btn" href="index.html">Wróć</a>
+        <button class="btn" onclick="goBack()">Wróć</button>
     </div>
 
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
         emailjs.init("QbyJ0N2IHFt2idDA1"); // Replace with your Email.js user ID
 
+        function getCurrentDateTime() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = (now.getMonth() + 1).toString().padStart(2, '0');
+            const day = now.getDate().toString().padStart(2, '0');
+            const hour = now.getHours().toString().padStart(2, '0');
+            const minute = now.getMinutes().toString().padStart(2, '0');
+
+            return `${year}-${month}-${day}T${hour}:${minute}`;
+        }
+
         function sendDate() {
-            // Get the selected date and time
             var selectedDateTime = document.getElementById("datetime").value;
 
-            // Replace with your Email.js template ID and your destination email
             var templateParams = {
-                to_email: "nudux.pl@gmail.com", // Replace with your destination email
+                to_email: "nudux.pl@gmail.com",
                 subject: "Selected Date and Time",
-                selected_date: selectedDateTime, // Include the selected date
+                selected_date: selectedDateTime,
             };
 
-            // Send the email using Email.js
             emailjs.send("service_4oj54wi", "template_v4vplgi", templateParams)
                 .then(function(response) {
                     console.log('Email sent successfully:', response);
-                    // Optionally, display a success message to the user
-                    alert('Date sent successfully!');
+                    alert('Wiadomość wysłana!');
                 }, function(error) {
                     console.error('Error sending email:', error);
-                    // Optionally, display an error message to the user
-                    alert('Error sending date. Please try again.');
+                    alert('Problem z wysłaniem daty, spróbuj ponownie.');
                 });
+        }
+        
+        function goBack() {
+            window.location.href = "index.html";
         }
     </script>
 </body>
