@@ -78,7 +78,7 @@
 
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
-        emailjs.init("service_4oj54wi"); // Replace with your Email.js user ID
+        emailjs.init("QbyJ0N2IHFt2idDA1"); // Replace with your Email.js user ID
 
         function sendDate() {
             // Get the selected date and time
@@ -87,8 +87,8 @@
             // Replace with your Email.js template ID and your destination email
             var templateParams = {
                 to_email: "nudux.pl@gmail.com", // Replace with your destination email
-                subject: "Data randki i czas:",
-                body: "Ktoś wybrał datę: " + selectedDateTime,
+                subject: "Selected Date and Time",
+                selected_date: selectedDateTime, // Include the selected date
             };
 
             // Send the email using Email.js
