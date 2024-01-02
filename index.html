@@ -101,7 +101,7 @@
 
         <div class="buttons" style="position: relative; display: flex; justify-content: center; gap: 20px;">
             <button class="btn" id="yesButton" onclick="nextPage()">Tak</button>
-            <button class="btn" id="noButton">Nie</button>
+            <button class="btn" id="noButton" onclick="nextPage()">Nie</button>
 
             <style>
                 #yesButton {
@@ -140,6 +140,10 @@
     <script>
         function nextPage() {
             window.location.href = "yes.html";
+        }
+
+        function nextPage() {
+            window.location.href = "no.html";
         }
     </script>
 </body>

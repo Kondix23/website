@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>https://kondix23.github.io/website/</title>
+    <title>Yes Page</title>
     <style>
         body {
             margin: 0;
@@ -13,7 +13,6 @@
             min-height: 100vh;
             background-color: #87CEEB; /* Light blue background */
             font-family: Arial, sans-serif;
-            font-weight: bold;
         }
 
         .container {
@@ -22,11 +21,16 @@
 
         .header_text {
             color: #333;
-            font-size: 24px;
+            font-size: 28px; /* Slightly larger font size for a friendlier look */
+            font-family: 'Comic Sans MS', cursive; /* Change the font to Comic Sans MS */
             margin-bottom: 20px;
         }
 
         .gif_container {
+            margin-bottom: 20px;
+        }
+
+        .date_time_picker {
             margin-bottom: 20px;
         }
 
@@ -39,19 +43,11 @@
             color: #fff;
             font-weight: bold;
             letter-spacing: 1px;
-        }
-        p {
-            color: #333;
-            font-size: 16px;
-            font-weight: bold;
+            background-color: #4CAF50; /* Green color for "Send" button */
         }
 
-        #backButton {
-            background-color: #ff3366; /* Rosy color for "Back" button */
-        }
-
-        #backButton:hover {
-            animation: shakeAnimation 0.5s ease-in-out;
+        .btn:hover {
+            background-color: #45a049; /* Darker green on hover */
         }
 
         @keyframes shakeAnimation {
@@ -69,18 +65,44 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="header_text">Jupi!</h1>
+        <h1 class="header_text">Thank you for saying Yes!</h1>
         <div class="gif_container">
-            <img src="https://media.giphy.com/media/dyiaslUpT2homZbw7W/giphy.gif" alt="Excited gif">
+            <img src="https://tenor.com/pl/view/yippee-iluvmybf-gif-4712057245981450122" alt="Excited gif">
         </div>
-        <div>
-            <p>Do zobczenia niedługo...</p>
+        <div class="date_time_picker">
+            <label for="datetime">Choose a date and time:</label>
+            <input type="datetime-local" id="datetime" name="datetime" required>
+        </div>
+        <button class="btn" onclick="sendDate()">Send</button>
+    </div>
 
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
-        function goBack() {
-            window.history.back();
+        emailjs.init("service_4oj54wi"); // Replace with your Email.js user ID
+
+        function sendDate() {
+            // Get the selected date and time
+            var selectedDateTime = document.getElementById("datetime").value;
+
+            // Replace with your Email.js template ID and your destination email
+            var templateParams = {
+                to_email: "nudux.pl@gmail.com", // Replace with your destination email
+                subject: "Data randki i czas:",
+                body: "Ktoś wybrał datę: " + selectedDateTime,
+            };
+
+            // Send the email using Email.js
+            emailjs.send("service_4oj54wi", "template_v4vplgi", templateParams)
+                .then(function(response) {
+                    console.log('Email sent successfully:', response);
+                    // Optionally, display a success message to the user
+                    alert('Date sent successfully!');
+                }, function(error) {
+                    console.error('Error sending email:', error);
+                    // Optionally, display an error message to the user
+                    alert('Error sending date. Please try again.');
+                });
         }
     </script>
 </body>
 </html>
-
